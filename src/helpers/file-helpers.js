@@ -33,7 +33,7 @@ export async function loadBlogPost(slug) {
   const { data: frontmatter, content } =
     matter(rawContent);
 
-  return { frontmatter, content };
+  return { ...frontmatter, content };
 }
 
 function readFile(localPath) {
