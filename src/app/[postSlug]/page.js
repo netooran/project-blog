@@ -5,6 +5,16 @@ import BlogHero from '@/components/BlogHero';
 
 import styles from './postSlug.module.css';
 import { loadBlogPost } from '@/helpers/file-helpers';
+import { BLOG_TITLE } from '@/constants';
+
+export async function generateMetadata({ params }) {
+  const { title, abstract } = await loadBlogPost(params.postSlug);
+
+  return {
+    title: `${title} • ${BLOG_TITLE}`,
+    description: abstract,
+  };
+}
 
 async function BlogPost({ params }) {
   const { title, publishedOn, content } = await loadBlogPost(params.postSlug);
