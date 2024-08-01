@@ -8,6 +8,7 @@ import { loadBlogPost } from '@/helpers/file-helpers';
 import { BLOG_TITLE } from '@/constants';
 import CodeSnippet from '@/components/CodeSnippet';
 import DivisionGroupsDemo from '@/components/DivisionGroupsDemo';
+import CircularColorsDemo from '@/components/CircularColorsDemo';
 
 export async function generateMetadata({ params }) {
   const { title, abstract } = await loadBlogPost(params.postSlug);
@@ -27,7 +28,11 @@ async function BlogPost({ params }) {
       <div className={styles.page}>
         <MDXRemote
           source={content}
-          components={{ pre: CodeSnippet, DivisionGroupsDemo }}
+          components={{
+            pre: CodeSnippet,
+            DivisionGroupsDemo,
+            CircularColorsDemo,
+          }}
         ></MDXRemote>
       </div>
     </article>
